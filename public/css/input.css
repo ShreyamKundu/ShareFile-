@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+    background-color:#fff4e6;
+}
+
+.dragged{
+    @apply bg-[#ffe8cc] border-[#f76707];
+}
+
+.dragged .fileIcon{
+    transform: scale(1.2,1.2);
+
+}
