@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/image/favicon.ico">
+    <link type="text/css" rel="stylesheet" href="/css/style.css">
+    <title>shareFile</title>
+</head>
+<body>
+
+    <section class="container mx-auto flex flex-col items-center justify-center min-h-screen p-4 md:w-full lg:max-w-screen-md xl:max-w-screen-lg 2xl:max-w-screen-xl">
+
+        <div class="upload-zone bg-white p-4 md:p-8 lg:p-10 mx-2 lg:w-[60%] rounded-xl flex flex-col space-y-4 md:space-y-8">
+
+            <div class="drop-zone flex flex-col border border-2 border-dashed border-[#ffa94d] px-4 md:px-6 py-8 md:py-12 rounded-xl items-center justify-center">
+                <div class="hidden">
+                    <a target="_blank" href="https://icons8.com/icon/dM-cqlhsN3-n/upload-document">file upload</a>
+                    icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+                </div>
+                <img src="/image/icons8-file-upload-64.png" alt="File Icon" class="fileIcon mb-6 w-12 md:w-16" />
+                <form action="/api/files" method="post" enctype="multipart/form-data" class="uploadForm" id="uploadForm">
+                    <input type="file" id="fileInput" class="hidden" name="myfile" />
+                </form>
+                <div class="title text-base md:text-lg cursor-pointer">
+                    Drop your files or
+                    <span class="browseBtn font-medium text-[#f76707]">browse</span>
+                </div>
+            </div>
+
+            <!-- Uploading  -->
+            <div class="uploading hidden border border-[#ffc078] rounded-lg">
+                <div class="uploaded w-[0%] flex flex-col pt-3 bg-[#ffc078] rounded-lg">
+                    <p class="text-base md:text-lg pl-3">Uploading...</p>
+                    <p class="uploadedtext pl-3">0%</p>
+                </div>
+            </div>
+
+            <!-- Link Section -->
+            <div class="link-zone hidden">
+                <p class="text-center">Link expires in 24 hrs...</p>
+                <div class="link mt-5">
+                    <div class="input-container relative flex items-center">
+                        <input
+                            type="text"
+                            id="fileLinkInput"
+                            name="share-link"
+                            readonly
+                            class="w-full select-none border-dashed border-2 border-[#ffa94d] rounded-lg p-2 bg-[#ffe8cc] text-[#f76707] pr-10"
+                        />
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            height="24"
+                            width="24"
+                            viewBox="0 0 448 512"
+                            class="absolute right-2 copy-icon"
+                        >
+                            <path
+                                fill="#000"
+                                d="M384 336H192c-8.8 0-16-7.2-16-16V64c0-8.8 7.2-16 16-16l140.1 0L400 115.9V320c0 8.8-7.2 16-16 16zM192 384H384c35.3 0 64-28.7 64-64V115.9c0-12.7-5.1-24.9-14.1-33.9L366.1 14.1c-9-9-21.2-14.1-33.9-14.1H192c-35.3 0-64 28.7-64 64V320c0 35.3 28.7 64 64 64zM64 128c-35.3 0-64 28.7-64 64V448c0 35.3 28.7 64 64 64H256c35.3 0 64-28.7 64-64V416H272v32c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V192c0-8.8 7.2-16 16-16H96V128H64z"
+                            />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Email Section -->
+            <div class="email-section hidden">
+                <p class="text-center">Or Send Via Email</p>
+                <div class="email-container p-4 md:p-6 rounded-lg border-2 border-[#ffa94d] mt-5 flex flex-col space-y-4 md:space-y-5">
+                    <div class="my-email flex justify-between">
+                        <label for="to-email">Receiver's email</label>
+                        <input
+                            type="email"
+                            id="to-email"
+                            name="emailTo"
+                            class="email w-full md:w-[60%] border-2 border-[#ffa94d] rounded-md bg-[#ffe8cc] text-[#f76707] outline-none"
+                        />
+                    </div>
+                    <button
+                        id="sendButton"
+                        type="button"
+                        class="font-medium bg-[#ffa94d] rounded-md px-4 py-1 hover:bg-[#fd7e14] hover:text-white"
+                    >
+                        Send
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <script src="/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="/image/favicon.ico" />
+    <link type="text/css" rel="stylesheet" href="/css/style.css" />
+    <title>shareFile</title>
+  </head>
+  <body>
+    <div class="container flex flex-col items-center justify-center h-screen">
+      <div class="download-box mx-4 bg-white flex flex-col p-10 rounded-lg">
+        <img
+          src="/image/icons8-download-80.png"
+          alt="file download"
+          width="115.9V320c0"
+          class="m-auto"
+        />
+        <!-- Error show -->
+        <% if(locals.error) { %>
+        <h4 class="mt-8 px-4 text-xl font-medium"><%= error %> 😏</h4>
+        <% } else { %>
+        <h3 class="text-xl font-bold mb-5 text-center">
+          Your file is ready for download
+        </h3>
+        <p class="text-center mb-2">Link expires in 24 hours</p>
+        <h3 class="text-center text-lg font-medium"><%= filename %></h3>
+        <p class="text-center"><%=size%> KB</p>
+        <a href="<%= download %>"
+          type="submit"
+          class="text-center mt-5 font-medium bg-[#ffa94d] rounded-md px-4 py-1 hover:bg-[#fd7e14] hover:text-white"
+        >
+          Download file
+        </a>
+        <% } %>
+      </div>
+    </div>
+  </body>
+</html>
